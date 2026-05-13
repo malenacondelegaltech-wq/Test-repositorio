@@ -312,6 +312,22 @@
     .footer-logo { font-weight: 700; font-size: .95rem; color: var(--muted); }
     .footer-copy { color: var(--muted); font-size: .82rem; }
 
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      color: var(--muted); text-decoration: none; font-size: .82rem;
+      display: inline-flex; align-items: center; gap: .35rem;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    .about-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+    .pill {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--muted); font-size: .8rem; padding: .3rem .8rem; border-radius: 99px;
+    }
+    .pill svg { flex-shrink: 0; }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
       #sobre-mi { grid-template-columns: 1fr; text-align: center; }
@@ -342,21 +358,21 @@
   <div class="hero-glow hero-glow-1"></div>
   <div class="hero-glow hero-glow-2"></div>
   <div>
-    <div class="hero-badge"><span></span> Legal Tech &amp; Innovación Jurídica</div>
+    <div class="hero-badge"><span></span> Abogada · Legal Tech · UBA</div>
     <h1 class="hero-title">
       El futuro del derecho<br>
       es <span class="highlight">tecnológico.</span>
     </h1>
     <p class="hero-sub">
-      Soy Malena Conde, abogada especializada en Legal Tech. Ayudo a estudios jurídicos
-      y empresas a transformar sus procesos legales con inteligencia artificial y automatización.
+      Soy Malena Conde, abogada (UBA) especializada en Legal Tech. Ayudo a corporaciones
+      y startups a transformar sus procesos legales con inteligencia artificial y automatización.
     </p>
     <div class="hero-actions">
       <a href="#servicios" class="btn-primary">
         Ver servicios
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="#sobre-mi" class="btn-ghost">Conocé mi trabajo</a>
+      <a href="https://www.linkedin.com/in/malena-conde-84715b198/" target="_blank" rel="noopener" class="btn-ghost">Ver LinkedIn</a>
     </div>
   </div>
 </section>
@@ -367,16 +383,34 @@
     <p class="about-label">Sobre mí</p>
     <h2 class="about-heading">Donde el derecho<br>se encuentra con la tecnología</h2>
     <p class="about-text">
-      Soy abogada con especialización en Legal Tech, apasionada por la intersección entre el derecho y la innovación tecnológica.
-      Mi misión es ayudar a profesionales e instituciones jurídicas a adoptar herramientas de inteligencia artificial que simplifiquen su trabajo y maximicen su impacto.
+      Soy abogada recibida en la <strong style="color:var(--text)">Universidad de Buenos Aires (UBA)</strong> con especialización en Legal Tech.
+      Trabajo en la intersección entre el derecho y la innovación tecnológica, ayudando a corporaciones y startups a modernizar sus operaciones jurídicas con herramientas de inteligencia artificial.
     </p>
     <p class="about-text">
-      Combino formación jurídica sólida con conocimiento técnico profundo para diseñar soluciones a medida — desde la automatización de contratos hasta la implementación de sistemas de due diligence con IA.
+      Mi enfoque combina sólida formación jurídica con visión tecnológica: diseño soluciones a medida que van desde la automatización de contratos hasta procesos de due diligence potenciados con IA, siempre adaptadas al contexto y cultura de cada organización.
     </p>
+    <div class="about-pills">
+      <span class="pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Abogada · UBA
+      </span>
+      <span class="pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Legal Tech
+      </span>
+      <span class="pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Corporaciones &amp; Startups
+      </span>
+      <span class="pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        IA Aplicada
+      </span>
+    </div>
     <div class="stats">
       <div class="stat-card">
-        <div class="num">100%</div>
-        <div class="label">Enfoque en Legal Tech</div>
+        <div class="num">UBA</div>
+        <div class="label">Formación en Derecho</div>
       </div>
       <div class="stat-card">
         <div class="num">IA</div>
@@ -394,7 +428,15 @@
   </div>
   <div class="about-visual">
     <div class="avatar-ring"></div>
-    <div class="avatar-frame">⚖️</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1.25rem;">
+      <div class="avatar-frame">⚖️</div>
+      <a href="https://www.linkedin.com/in/malena-conde-84715b198/" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:.5rem;color:var(--accent);font-size:.88rem;font-weight:600;text-decoration:none;border:1px solid rgba(59,130,246,.3);padding:.45rem 1.1rem;border-radius:99px;background:rgba(59,130,246,.07);transition:background .2s;"
+         onmouseover="this.style.background='rgba(59,130,246,.15)'" onmouseout="this.style.background='rgba(59,130,246,.07)'">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        Ver perfil en LinkedIn
+      </a>
+    </div>
   </div>
 </section>
 
@@ -494,7 +536,7 @@
     <p class="cta-sub">
       Contame sobre tu proyecto o desafío. Respondemos en menos de 24 horas.
     </p>
-    <a href="mailto:tu-email@dominio.com" class="cta-email-btn">
+    <a href="mailto:malenaconde.legaltech@gmail.com" class="cta-email-btn">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
       </svg>
@@ -507,6 +549,16 @@
 <!-- FOOTER -->
 <footer>
   <span class="footer-logo">Malena Conde · Legal Tech</span>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/malena-conde-84715b198/" target="_blank" rel="noopener">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a href="mailto:malenaconde.legaltech@gmail.com">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      malenaconde.legaltech@gmail.com
+    </a>
+  </div>
   <span class="footer-copy">© 2026 · Todos los derechos reservados</span>
 </footer>
 
