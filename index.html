@@ -1,566 +1,697 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Malena Conde | Legal Tech</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malena Conde · Abogada · Penal · Empresarial · Tecnología</title>
+  <meta name="description" content="Abogada especializada en Derecho Penal, Empresarial y Tecnológico. Cripto, blockchain y fintech. CPACF T°155 F°526. Ciudad Autónoma de Buenos Aires.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --navy:   #0a0f1e;
-      --dark:   #111827;
-      --card:   #161d2e;
-      --border: #1e2d47;
-      --accent: #3b82f6;
-      --accent2: #6366f1;
-      --text:   #e2e8f0;
-      --muted:  #94a3b8;
-      --white:  #ffffff;
+      --bg: #FFFFFF;
+      --surface: #F6F6F4;
+      --surface2: #EDEDEA;
+      --navy: #0A1628;
+      --navy-mid: #1A3A6B;
+      --navy-light: #E8EDF5;
+      --black: #0D0D0D;
+      --gray-dark: #3A3A3A;
+      --gray: #6B6F76;
+      --gray-light: #A9ADB4;
+      --border: #DDDDD9;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
+      background: var(--bg);
+      color: var(--black);
       font-family: 'Inter', sans-serif;
-      background: var(--navy);
-      color: var(--text);
+      font-weight: 300;
       line-height: 1.7;
+      font-size: 15px;
+      overflow-x: hidden;
     }
 
-    /* ─── NAV ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.25rem 6vw;
-      background: rgba(10, 15, 30, 0.85);
-      backdrop-filter: blur(12px);
+    a { color: inherit; }
+
+    /* ── NAV ── */
+    .navbar {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
+      padding: 18px 48px;
+      display: flex; align-items: center; justify-content: space-between;
     }
+    .navbar-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-mark { font-weight: 800; font-size: 21px; color: var(--navy); letter-spacing: -0.02em; }
+    .logo-divider { width: 1px; height: 26px; background: var(--border); }
+    .logo-text { font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray); }
 
-    .nav-logo {
-      font-weight: 700; font-size: 1.1rem; letter-spacing: -.02em;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    .menu-toggle {
+      background: none; border: none; cursor: pointer;
+      display: flex; flex-direction: column; gap: 5px; padding: 10px;
     }
+    .menu-toggle span { width: 24px; height: 1.5px; background: var(--navy); display: block; transition: transform 0.2s, opacity 0.2s; }
 
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      color: var(--muted); text-decoration: none; font-size: .9rem; font-weight: 500;
-      transition: color .2s;
+    /* ── MENU OVERLAY ── */
+    .menu-overlay {
+      position: fixed; inset: 0; z-index: 500;
+      background: #fff;
+      display: flex; flex-direction: column;
+      transform: translateY(-100%);
+      transition: transform 0.45s cubic-bezier(.65,0,.35,1);
     }
-    .nav-links a:hover { color: var(--white); }
-
-    .nav-cta {
-      background: var(--accent); color: var(--white);
-      padding: .5rem 1.25rem; border-radius: 8px;
-      font-size: .9rem; font-weight: 600; text-decoration: none;
-      transition: background .2s, transform .15s;
+    .menu-overlay.open { transform: translateY(0); }
+    .menu-overlay-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px; border-bottom: 1px solid var(--border);
     }
-    .nav-cta:hover { background: #2563eb; transform: translateY(-1px); }
+    .menu-close {
+      background: none; border: none; font-size: 26px; line-height: 1;
+      cursor: pointer; color: var(--navy); font-weight: 300;
+    }
+    .menu-list { flex: 1; display: flex; flex-direction: column; padding: 0 48px; overflow-y: auto; }
+    .menu-list a {
+      padding: 22px 0; border-bottom: 1px solid var(--border);
+      text-decoration: none; color: var(--gray);
+      font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .menu-list a:hover { color: var(--navy); }
+    .menu-lang { padding: 22px 0; font-size: 11px; letter-spacing: 0.16em; color: var(--gray-light); text-transform: uppercase; }
 
-    /* ─── HERO ─── */
-    #hero {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
+    /* ── HERO ── */
+    .hero {
+      position: relative; overflow: hidden;
+      min-height: 92vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center;
-      padding: 7rem 6vw 4rem;
-      position: relative; overflow: hidden;
+      padding: 120px 24px 96px;
+      background: linear-gradient(180deg, #EAF0F7 0%, #F5F2EC 48%, #FFFFFF 100%);
     }
-
+    .hero-mountains {
+      position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: auto;
+      z-index: 0; pointer-events: none;
+    }
     .hero-glow {
-      position: absolute; border-radius: 50%; filter: blur(100px); opacity: .25; pointer-events: none;
+      position: absolute; top: 6%; right: 12%;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,214,170,0.55) 0%, transparent 70%);
+      filter: blur(10px); z-index: 0; pointer-events: none;
     }
-    .hero-glow-1 { width: 500px; height: 500px; background: var(--accent);  top: -100px; left: -150px; }
-    .hero-glow-2 { width: 400px; height: 400px; background: var(--accent2); bottom: 0;   right: -100px; }
-
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.3);
-      color: var(--accent); font-size: .8rem; font-weight: 600; letter-spacing: .06em;
-      text-transform: uppercase; padding: .35rem .9rem; border-radius: 99px; margin-bottom: 1.5rem;
+    .hero-content { position: relative; z-index: 1; max-width: 900px; }
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--navy-mid); margin-bottom: 26px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
     }
-    .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
-
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
-
-    .hero-title {
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
-      font-weight: 700; line-height: 1.1; letter-spacing: -.03em;
-      margin-bottom: 1.5rem;
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; display: block; width: 30px; height: 1px; background: var(--navy-mid); opacity: 0.4;
     }
-    .hero-title .highlight {
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    .hero h1 {
+      font-weight: 200; font-size: clamp(30px, 5.4vw, 60px);
+      color: var(--navy); line-height: 1.18; letter-spacing: -0.01em;
     }
-
-    .hero-sub {
-      max-width: 640px; margin: 0 auto 2.5rem;
-      color: var(--muted); font-size: 1.15rem; font-weight: 400;
+    .hero h1 strong { display: block; font-weight: 700; }
+    .hero-desc {
+      max-width: 560px; margin: 30px auto 0;
+      color: var(--gray); line-height: 1.85; font-size: 15px;
     }
-
-    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: var(--white); padding: .85rem 2rem; border-radius: 10px;
-      font-weight: 600; font-size: 1rem; text-decoration: none;
-      transition: opacity .2s, transform .15s; display: inline-flex; align-items: center; gap: .5rem;
+    .hero-actions { display: flex; gap: 16px; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 46px; }
+    .btn-outline-navy {
+      border: 1px solid var(--navy); color: var(--navy); background: transparent;
+      padding: 16px 34px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, color 0.2s; display: inline-block;
     }
-    .btn-primary:hover { opacity: .9; transform: translateY(-2px); }
-
-    .btn-ghost {
-      border: 1px solid var(--border); color: var(--text);
-      padding: .85rem 2rem; border-radius: 10px;
-      font-weight: 500; font-size: 1rem; text-decoration: none;
-      transition: border-color .2s, background .2s, transform .15s;
+    .btn-outline-navy:hover { background: var(--navy); color: #fff; }
+    .btn-solid-navy {
+      background: var(--navy); color: #fff; border: 1px solid var(--navy);
+      padding: 16px 34px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s; display: inline-block;
     }
-    .btn-ghost:hover { border-color: var(--accent); background: rgba(59,130,246,.07); transform: translateY(-2px); }
+    .btn-solid-navy:hover { background: var(--navy-mid); border-color: var(--navy-mid); }
 
-    /* ─── ABOUT ─── */
-    #sobre-mi {
-      padding: 6rem 6vw;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-      max-width: 1100px; margin: 0 auto;
+    /* ── SECTIONS ── */
+    .section { padding: 100px 48px; }
+    .section-alt { background: var(--surface); }
+    .section-inner { max-width: 1180px; margin: 0 auto; }
+
+    .section-eyebrow {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--navy-mid); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
     }
+    .section-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--navy-mid); }
+    .section-eyebrow.center { justify-content: center; }
+    .section-eyebrow.center::before { display: none; }
 
-    .about-label {
-      text-transform: uppercase; letter-spacing: .1em; font-size: .78rem;
-      color: var(--accent); font-weight: 600; margin-bottom: .75rem;
+    .split-title {
+      font-weight: 200; font-size: clamp(26px, 3.8vw, 42px);
+      color: var(--navy); line-height: 1.2; letter-spacing: -0.01em;
     }
+    .split-title strong { font-weight: 700; }
 
-    .about-heading {
-      font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700;
-      letter-spacing: -.02em; line-height: 1.2; margin-bottom: 1.25rem;
-    }
+    /* ── INTRO / VISUAL PANEL ── */
+    .intro-text { max-width: 720px; color: var(--gray); line-height: 1.9; margin-top: 24px; font-size: 15.5px; }
 
-    .about-text { color: var(--muted); font-size: 1rem; margin-bottom: 1rem; }
-
-    .stats {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;
-    }
-
-    .stat-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1.25rem;
-    }
-    .stat-card .num {
-      font-size: 2rem; font-weight: 700;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .stat-card .label { color: var(--muted); font-size: .85rem; margin-top: .2rem; }
-
-    .about-visual {
-      position: relative; display: flex; align-items: center; justify-content: center;
-    }
-
-    .avatar-frame {
-      width: 320px; height: 320px; border-radius: 24px;
-      background: linear-gradient(135deg, var(--card), #1a2540);
-      border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 6rem; user-select: none;
+    .visual-panel {
+      margin-top: 56px; aspect-ratio: 21/8; width: 100%;
+      background: var(--navy);
       position: relative; overflow: hidden;
     }
-
-    .avatar-frame::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(59,130,246,.15), rgba(99,102,241,.1));
+    .visual-panel::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 42px 42px;
+    }
+    .visual-panel::after {
+      content: '';
+      position: absolute; width: 380px; height: 380px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,110,196,0.35) 0%, transparent 70%);
+      top: -120px; right: -60px;
+    }
+    .visual-panel-label {
+      position: relative; z-index: 1; height: 100%;
+      display: flex; align-items: flex-end; padding: 32px 40px;
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4);
     }
 
-    .avatar-ring {
-      position: absolute; inset: -20px;
-      border: 1px solid rgba(59,130,246,.2); border-radius: 36px;
+    /* ── ÁREAS ── */
+    .areas-grid {
+      margin-top: 56px;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+    }
+    .area-card { background: var(--bg); padding: 44px 36px; transition: background 0.25s; }
+    .area-card:hover { background: var(--navy-light); }
+    .area-icon { font-size: 24px; margin-bottom: 20px; opacity: 0.85; }
+    .area-card h3 { font-size: 19px; font-weight: 600; margin-bottom: 14px; color: var(--navy); letter-spacing: -0.01em; }
+    .area-card p { font-size: 13.5px; color: var(--gray); line-height: 1.75; }
+    .area-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 22px; }
+    .tag { font-size: 10px; padding: 4px 11px; border: 1px solid var(--border); color: var(--navy-mid); letter-spacing: 0.06em; }
+
+    /* ── DIFERENCIAL ── */
+    .diferencial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: center; }
+    .dif-text { color: var(--gray); line-height: 1.9; margin-bottom: 16px; margin-top: 24px; }
+    .dif-list { margin-top: 32px; display: flex; flex-direction: column; gap: 18px; }
+    .dif-item { display: flex; gap: 18px; align-items: flex-start; }
+    .dif-dot { width: 5px; height: 5px; background: var(--navy); margin-top: 9px; flex-shrink: 0; }
+    .dif-item-text { font-size: 14px; color: var(--gray); line-height: 1.7; }
+    .dif-item-text strong { color: var(--black); font-weight: 500; }
+    .dif-quote {
+      background: var(--navy); border-left: 3px solid rgba(255,255,255,0.2); padding: 48px;
+      font-size: 21px; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.75); line-height: 1.75;
+    }
+    .dif-quote cite {
+      display: block; font-style: normal; font-size: 10px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 28px;
     }
 
-    /* ─── SERVICES ─── */
-    #servicios {
-      padding: 6rem 6vw;
-      background: var(--dark);
+    /* ── CTA BANNER (acceso directo) ── */
+    .cta-banner { background: var(--navy); padding: 108px 48px; text-align: center; }
+    .cta-banner .section-eyebrow { color: rgba(255,255,255,0.45); justify-content: center; }
+    .cta-banner .section-eyebrow::before { background: rgba(255,255,255,0.3); }
+    .cta-title { font-weight: 200; font-size: clamp(28px, 4.4vw, 48px); color: #fff; line-height: 1.2; }
+    .cta-title strong { font-weight: 700; display: block; }
+    .cta-sub { color: rgba(255,255,255,0.5); max-width: 480px; margin: 24px auto 0; font-size: 15px; }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 44px; }
+    .btn-solid-white { background: #fff; color: var(--navy); border: 1px solid #fff; padding: 16px 34px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: background 0.2s; }
+    .btn-solid-white:hover { background: #E8EDF5; }
+    .btn-outline-white { border: 1px solid rgba(255,255,255,0.4); color: #fff; padding: 16px 34px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: border-color 0.2s, background 0.2s; }
+    .btn-outline-white:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+    /* ── SERVICIOS ── */
+    .servicios-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+    .servicio-card { background: var(--bg); padding: 40px 34px; border-top: 2px solid transparent; transition: border-color 0.25s; }
+    .servicio-card:hover { border-top-color: var(--navy); }
+    .serv-num { font-size: 11px; color: var(--gray-light); letter-spacing: 0.14em; margin-bottom: 18px; font-weight: 500; }
+    .servicio-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: var(--navy); letter-spacing: -0.01em; }
+    .servicio-card p { font-size: 13px; color: var(--gray); line-height: 1.75; }
+
+    /* ── SOBRE MÍ ── */
+    .sobre-grid { display: grid; grid-template-columns: 320px 1fr; gap: 88px; align-items: start; }
+    .sobre-foto {
+      width: 100%; aspect-ratio: 3/4; background: var(--surface2); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center; flex-direction: column; overflow: hidden;
     }
+    .sobre-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .sobre-foto-placeholder { padding: 60px 24px; text-align: center; }
+    .foto-icon { font-size: 46px; margin-bottom: 16px; opacity: 0.25; }
+    .foto-hint { font-size: 11px; color: var(--gray-light); }
 
-    .section-header { text-align: center; margin-bottom: 3.5rem; }
-    .section-label {
-      text-transform: uppercase; letter-spacing: .1em; font-size: .78rem;
-      color: var(--accent); font-weight: 600; margin-bottom: .75rem;
+    .sobre-text { color: var(--gray); line-height: 1.9; margin-bottom: 18px; margin-top: 24px; }
+    .sobre-text strong { color: var(--black); font-weight: 500; }
+    .sobre-data { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 36px; border-top: 1px solid var(--border); }
+    .sobre-dato { padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .sobre-dato:nth-child(odd) { padding-right: 24px; border-right: 1px solid var(--border); }
+    .sobre-dato:nth-child(even) { padding-left: 24px; }
+    .dato-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gray-light); margin-bottom: 5px; }
+    .dato-val { font-size: 13px; color: var(--black); }
+
+    /* ── CONTACTO ── */
+    .contacto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; }
+    .contacto-desc { color: var(--gray); line-height: 1.9; margin: 20px 0 36px; }
+    .contacto-datos { display: flex; flex-direction: column; gap: 18px; }
+    .contacto-dato { display: flex; gap: 14px; align-items: center; }
+    .dato-icon { font-size: 17px; width: 22px; flex-shrink: 0; }
+    .dato-text { font-size: 14px; color: var(--gray); }
+    .dato-text a { text-decoration: none; transition: color 0.2s; }
+    .dato-text a:hover { color: var(--navy); }
+
+    .form { display: flex; flex-direction: column; gap: 18px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gray); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    input, select, textarea {
+      background: var(--bg); border: 1px solid var(--border); color: var(--black);
+      padding: 13px 16px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 300;
+      transition: border-color 0.2s; outline: none; width: 100%; appearance: none;
     }
-    .section-title {
-      font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700;
-      letter-spacing: -.02em;
+    input:focus, select:focus, textarea:focus { border-color: var(--navy); }
+    input::placeholder, textarea::placeholder { color: var(--gray-light); }
+    select { cursor: pointer; }
+    select option { background: #fff; color: var(--black); }
+    textarea { resize: vertical; min-height: 130px; }
+    .form-submit {
+      background: var(--navy); color: #fff; border: none; padding: 15px 36px;
+      font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+      cursor: pointer; font-weight: 500; transition: background 0.2s; align-self: flex-start; margin-top: 4px;
     }
-    .section-sub { color: var(--muted); font-size: 1rem; max-width: 560px; margin: .75rem auto 0; }
+    .form-submit:hover { background: var(--navy-mid); }
+    .form-success { display: none; padding: 20px 24px; border: 1px solid var(--navy); color: var(--navy); font-size: 14px; background: var(--navy-light); }
+    .form-success.visible { display: block; }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem; max-width: 1100px; margin: 0 auto;
+    /* ── FOOTER ── */
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 72px 48px 32px; }
+    .footer-inner { max-width: 1180px; margin: 0 auto; }
+    .footer-name { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: var(--navy); margin-bottom: 18px; }
+    .footer-tagline { font-size: 14px; color: var(--gray); line-height: 1.8; margin-bottom: 48px; }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 26px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;
     }
+    .footer-copy { font-size: 11.5px; color: var(--gray-light); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 11.5px; color: var(--gray-light); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--navy); }
 
-    .service-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; padding: 2rem;
-      transition: border-color .25s, transform .25s;
-      position: relative; overflow: hidden;
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .navbar, .menu-overlay-header, .menu-list { padding-left: 24px; padding-right: 24px; }
+      .hero { padding: 96px 24px 64px; min-height: auto; }
+      .section { padding: 72px 24px; }
+      .areas-grid { grid-template-columns: 1fr; }
+      .diferencial-grid { grid-template-columns: 1fr; gap: 40px; }
+      .servicios-grid { grid-template-columns: 1fr 1fr; }
+      .sobre-grid { grid-template-columns: 1fr; gap: 40px; }
+      .sobre-foto { aspect-ratio: 4/3; }
+      .contacto-grid { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+      .cta-banner { padding: 72px 24px; }
     }
-    .service-card:hover { border-color: var(--accent); transform: translateY(-4px); }
-
-    .service-card::after {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      opacity: 0; transition: opacity .25s;
-    }
-    .service-card:hover::after { opacity: 1; }
-
-    .service-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      background: rgba(59,130,246,.15); display: flex; align-items: center;
-      justify-content: center; font-size: 1.4rem; margin-bottom: 1.25rem;
-    }
-
-    .service-title {
-      font-size: 1.1rem; font-weight: 700; margin-bottom: .6rem;
-    }
-    .service-desc { color: var(--muted); font-size: .9rem; line-height: 1.6; }
-
-    .service-tag {
-      display: inline-block; margin-top: 1rem;
-      background: rgba(59,130,246,.1); color: var(--accent);
-      font-size: .75rem; font-weight: 600; padding: .2rem .7rem;
-      border-radius: 99px; border: 1px solid rgba(59,130,246,.2);
-    }
-
-    /* ─── PROCESS ─── */
-    #proceso {
-      padding: 6rem 6vw;
-      max-width: 900px; margin: 0 auto;
-    }
-
-    .process-steps { display: flex; flex-direction: column; gap: 0; margin-top: 3rem; }
-
-    .process-step {
-      display: grid; grid-template-columns: 60px 1fr;
-      gap: 1.5rem; padding-bottom: 2.5rem; position: relative;
-    }
-
-    .process-step:not(:last-child)::before {
-      content: ''; position: absolute;
-      left: 29px; top: 60px; bottom: 0; width: 2px;
-      background: linear-gradient(to bottom, var(--accent), transparent);
-      opacity: .3;
-    }
-
-    .step-num {
-      width: 60px; height: 60px; border-radius: 50%; flex-shrink: 0;
-      background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.3);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 1.1rem; color: var(--accent);
-    }
-
-    .step-title { font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; padding-top: .9rem; }
-    .step-desc { color: var(--muted); font-size: .9rem; }
-
-    /* ─── CTA ─── */
-    #contacto {
-      padding: 6rem 6vw;
-      background: var(--dark);
-    }
-
-    .cta-box {
-      max-width: 720px; margin: 0 auto; text-align: center;
-      background: linear-gradient(135deg, rgba(59,130,246,.08), rgba(99,102,241,.08));
-      border: 1px solid var(--border); border-radius: 24px; padding: 4rem 3rem;
-      position: relative; overflow: hidden;
-    }
-
-    .cta-box::before {
-      content: ''; position: absolute; inset: -1px;
-      border-radius: 24px; padding: 1px;
-      background: linear-gradient(135deg, rgba(59,130,246,.4), rgba(99,102,241,.4));
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude;
-    }
-
-    .cta-title {
-      font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700;
-      letter-spacing: -.02em; margin-bottom: 1rem;
-    }
-
-    .cta-sub { color: var(--muted); font-size: 1rem; margin-bottom: 2rem; }
-
-    .cta-email-btn {
-      display: inline-flex; align-items: center; gap: .6rem;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: var(--white); padding: 1rem 2.25rem;
-      border-radius: 12px; font-weight: 600; font-size: 1rem;
-      text-decoration: none; transition: opacity .2s, transform .15s;
-    }
-    .cta-email-btn:hover { opacity: .9; transform: translateY(-2px); }
-
-    .cta-note { color: var(--muted); font-size: .82rem; margin-top: 1.25rem; }
-
-    /* ─── FOOTER ─── */
-    footer {
-      padding: 2.5rem 6vw;
-      border-top: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-    }
-
-    .footer-logo { font-weight: 700; font-size: .95rem; color: var(--muted); }
-    .footer-copy { color: var(--muted); font-size: .82rem; }
-
-    .footer-links { display: flex; gap: 1.5rem; }
-    .footer-links a {
-      color: var(--muted); text-decoration: none; font-size: .82rem;
-      display: inline-flex; align-items: center; gap: .35rem;
-      transition: color .2s;
-    }
-    .footer-links a:hover { color: var(--accent); }
-
-    .about-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
-    .pill {
-      display: inline-flex; align-items: center; gap: .4rem;
-      background: var(--card); border: 1px solid var(--border);
-      color: var(--muted); font-size: .8rem; padding: .3rem .8rem; border-radius: 99px;
-    }
-    .pill svg { flex-shrink: 0; }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 768px) {
-      #sobre-mi { grid-template-columns: 1fr; text-align: center; }
-      .about-visual { order: -1; }
-      .avatar-frame { width: 200px; height: 200px; font-size: 4rem; }
-      .stats { grid-template-columns: 1fr 1fr; }
-      nav .nav-links { display: none; }
-      .cta-box { padding: 3rem 1.5rem; }
+    @media (max-width: 600px) {
+      .servicios-grid { grid-template-columns: 1fr; }
+      .sobre-data { grid-template-columns: 1fr; }
+      .sobre-dato:nth-child(odd) { padding-right: 0; border-right: none; }
+      .sobre-dato:nth-child(even) { padding-left: 0; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <span class="nav-logo">Malena Conde</span>
-  <ul class="nav-links">
-    <li><a href="#sobre-mi">Sobre mí</a></li>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#proceso">Proceso</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-  <a href="#contacto" class="nav-cta">Trabajemos juntos</a>
-</nav>
+<header class="navbar">
+  <a href="#" class="navbar-logo">
+    <span class="logo-mark">MC</span>
+    <span class="logo-divider"></span>
+    <span class="logo-text">Malena Conde</span>
+  </a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- MENU OVERLAY -->
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-overlay-header">
+    <a href="#" class="navbar-logo">
+      <span class="logo-mark">MC</span>
+      <span class="logo-divider"></span>
+      <span class="logo-text">Malena Conde</span>
+    </a>
+    <button class="menu-close" id="menuClose" aria-label="Cerrar menú">✕</button>
+  </div>
+  <nav class="menu-list">
+    <a href="#areas">Áreas de práctica</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#sobre">Sobre mí</a>
+    <a href="#contacto">Contacto</a>
+    <a href="https://wa.me/5491136779004" target="_blank" rel="noopener">WhatsApp</a>
+    <span class="menu-lang">ES</span>
+  </nav>
+</div>
 
 <!-- HERO -->
-<section id="hero">
-  <div class="hero-glow hero-glow-1"></div>
-  <div class="hero-glow hero-glow-2"></div>
-  <div>
-    <div class="hero-badge"><span></span> Abogada · Legal Tech · UBA</div>
-    <h1 class="hero-title">
-      El futuro del derecho<br>
-      es <span class="highlight">tecnológico.</span>
-    </h1>
-    <p class="hero-sub">
-      Soy Malena Conde, abogada (UBA) especializada en Legal Tech. Ayudo a corporaciones
-      y startups a transformar sus procesos legales con inteligencia artificial y automatización.
-    </p>
+<section class="hero" id="inicio">
+  <svg class="hero-mountains" viewBox="0 0 1440 360" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="0,360 0,220 180,120 340,210 520,80 700,200 880,60 1080,190 1260,110 1440,200 1440,360" fill="#0A1628" opacity="0.05"></polygon>
+    <polygon points="0,360 0,270 220,180 460,250 640,150 860,240 1080,140 1300,230 1440,190 1440,360" fill="#0A1628" opacity="0.08"></polygon>
+    <polygon points="0,360 0,310 260,250 540,300 780,230 1020,290 1260,240 1440,280 1440,360" fill="#0A1628" opacity="0.12"></polygon>
+  </svg>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Abogada · CPACF T°155 F°526</p>
+    <h1>Donde el rigor jurídico<strong>se une al alcance global.</strong></h1>
+    <p class="hero-desc">Asesoramiento jurídico especializado para empresas y personas que necesitan una abogada que entienda su negocio, anticipe riesgos y resuelva problemas concretos — sin la estructura de un estudio tradicional.</p>
     <div class="hero-actions">
-      <a href="#servicios" class="btn-primary">
-        Ver servicios
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <a href="https://www.linkedin.com/in/malena-conde-84715b198/" target="_blank" rel="noopener" class="btn-ghost">Ver LinkedIn</a>
+      <a href="#areas" class="btn-outline-navy">Explorar ↓</a>
+      <a href="#contacto" class="btn-solid-navy">Agendar reunión</a>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="sobre-mi">
-  <div>
-    <p class="about-label">Sobre mí</p>
-    <h2 class="about-heading">Donde el derecho<br>se encuentra con la tecnología</h2>
-    <p class="about-text">
-      Soy abogada recibida en la <strong style="color:var(--text)">Universidad de Buenos Aires (UBA)</strong> con especialización en Legal Tech.
-      Trabajo en la intersección entre el derecho y la innovación tecnológica, ayudando a corporaciones y startups a modernizar sus operaciones jurídicas con herramientas de inteligencia artificial.
-    </p>
-    <p class="about-text">
-      Mi enfoque combina sólida formación jurídica con visión tecnológica: diseño soluciones a medida que van desde la automatización de contratos hasta procesos de due diligence potenciados con IA, siempre adaptadas al contexto y cultura de cada organización.
-    </p>
-    <div class="about-pills">
-      <span class="pill">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        Abogada · UBA
-      </span>
-      <span class="pill">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        Legal Tech
-      </span>
-      <span class="pill">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        Corporaciones &amp; Startups
-      </span>
-      <span class="pill">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        IA Aplicada
-      </span>
+<!-- ÁREAS -->
+<section class="section" id="areas">
+  <div class="section-inner">
+    <p class="section-eyebrow">Áreas de práctica</p>
+    <h2 class="split-title">Tres áreas. <strong>Un mismo estándar.</strong></h2>
+    <p class="intro-text">Trabajo con empresas y personas que necesitan resultados concretos, no promesas — combinando el rigor de la formación jurídica tradicional con la agilidad de una asesoría pensada para la economía digital.</p>
+
+    <div class="visual-panel">
+      <div class="visual-panel-label">Penal · Empresarial · Tecnología</div>
     </div>
-    <div class="stats">
-      <div class="stat-card">
-        <div class="num">UBA</div>
-        <div class="label">Formación en Derecho</div>
+
+    <div class="areas-grid">
+      <div class="area-card">
+        <div class="area-icon">⚖️</div>
+        <h3>Derecho Penal</h3>
+        <p>Defensa técnica y querella en causas penales. Especialización en delitos económicos, cibernéticos y estafas con criptoactivos, incluyendo casos con componente transnacional.</p>
+        <div class="area-tags">
+          <span class="tag">Defensa penal</span>
+          <span class="tag">Delitos económicos</span>
+          <span class="tag">Cibercrimen</span>
+          <span class="tag">Estafas cripto</span>
+          <span class="tag">Extorsión</span>
+        </div>
       </div>
-      <div class="stat-card">
-        <div class="num">IA</div>
-        <div class="label">Herramientas de última generación</div>
+      <div class="area-card">
+        <div class="area-icon">🏛️</div>
+        <h3>Derecho Empresarial</h3>
+        <p>Asesoramiento a empresas en contratos, estructuras societarias, compliance y prevención de riesgos legales. Acompañamiento continuo sin el costo de un área legal interna.</p>
+        <div class="area-tags">
+          <span class="tag">Contratos</span>
+          <span class="tag">NDAs</span>
+          <span class="tag">Compliance</span>
+          <span class="tag">Societario</span>
+          <span class="tag">Due diligence</span>
+        </div>
       </div>
-      <div class="stat-card">
-        <div class="num">4</div>
-        <div class="label">Servicios especializados</div>
-      </div>
-      <div class="stat-card">
-        <div class="num">+ROI</div>
-        <div class="label">Eficiencia jurídica medible</div>
-      </div>
-    </div>
-  </div>
-  <div class="about-visual">
-    <div class="avatar-ring"></div>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:1.25rem;">
-      <div class="avatar-frame">⚖️</div>
-      <a href="https://www.linkedin.com/in/malena-conde-84715b198/" target="_blank" rel="noopener"
-         style="display:inline-flex;align-items:center;gap:.5rem;color:var(--accent);font-size:.88rem;font-weight:600;text-decoration:none;border:1px solid rgba(59,130,246,.3);padding:.45rem 1.1rem;border-radius:99px;background:rgba(59,130,246,.07);transition:background .2s;"
-         onmouseover="this.style.background='rgba(59,130,246,.15)'" onmouseout="this.style.background='rgba(59,130,246,.07)'">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-        Ver perfil en LinkedIn
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="servicios">
-  <div class="section-header">
-    <p class="section-label">Servicios</p>
-    <h2 class="section-title">¿En qué puedo ayudarte?</h2>
-    <p class="section-sub">Soluciones Legal Tech diseñadas para modernizar tu práctica jurídica.</p>
-  </div>
-
-  <div class="services-grid">
-
-    <div class="service-card">
-      <div class="service-icon">📄</div>
-      <h3 class="service-title">Automatización de Contratos</h3>
-      <p class="service-desc">
-        Implemento sistemas de generación y revisión automática de contratos usando IA, reduciendo horas de trabajo a minutos y minimizando el riesgo de errores.
-      </p>
-      <span class="service-tag">IA Generativa</span>
-    </div>
-
-    <div class="service-card">
-      <div class="service-icon">💡</div>
-      <h3 class="service-title">Consultoría Legal Tech</h3>
-      <p class="service-desc">
-        Analizo los procesos de tu estudio o empresa y diseño una hoja de ruta personalizada para digitalizarlos con las herramientas más adecuadas para tu realidad.
-      </p>
-      <span class="service-tag">Estrategia</span>
-    </div>
-
-    <div class="service-card">
-      <div class="service-icon">🔍</div>
-      <h3 class="service-title">Due Diligence con IA</h3>
-      <p class="service-desc">
-        Optimizo procesos de due diligence mediante herramientas de inteligencia artificial que analizan grandes volúmenes de documentos de forma rápida y precisa.
-      </p>
-      <span class="service-tag">Análisis Documental</span>
-    </div>
-
-    <div class="service-card">
-      <div class="service-icon">🎓</div>
-      <h3 class="service-title">Capacitaciones y Workshops</h3>
-      <p class="service-desc">
-        Formo a equipos jurídicos en el uso de tecnología e IA aplicada al derecho, con talleres prácticos adaptados a tu organización y nivel de conocimiento.
-      </p>
-      <span class="service-tag">Formación</span>
-    </div>
-
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section id="proceso">
-  <div class="section-header">
-    <p class="section-label">Proceso</p>
-    <h2 class="section-title">¿Cómo trabajamos juntos?</h2>
-    <p class="section-sub">Un proceso claro, colaborativo y orientado a resultados concretos.</p>
-  </div>
-
-  <div class="process-steps">
-    <div class="process-step">
-      <div class="step-num">01</div>
-      <div>
-        <h3 class="step-title">Diagnóstico</h3>
-        <p class="step-desc">Entendemos tus procesos actuales, identificamos cuellos de botella y oportunidades de automatización.</p>
-      </div>
-    </div>
-    <div class="process-step">
-      <div class="step-num">02</div>
-      <div>
-        <h3 class="step-title">Diseño de solución</h3>
-        <p class="step-desc">Propongo un plan a medida con las herramientas y tecnologías más adecuadas para tu caso específico.</p>
-      </div>
-    </div>
-    <div class="process-step">
-      <div class="step-num">03</div>
-      <div>
-        <h3 class="step-title">Implementación</h3>
-        <p class="step-desc">Ejecuto la solución de forma iterativa, con foco en resultados rápidos y ajuste continuo.</p>
-      </div>
-    </div>
-    <div class="process-step">
-      <div class="step-num">04</div>
-      <div>
-        <h3 class="step-title">Capacitación y acompañamiento</h3>
-        <p class="step-desc">Entreno a tu equipo y brindo soporte para asegurar que la adopción sea exitosa y sostenible.</p>
+      <div class="area-card">
+        <div class="area-icon">💻</div>
+        <h3>Derecho Tecnológico</h3>
+        <p>Especialista en cripto, blockchain, fintech y activos digitales. Conocimiento profundo del marco regulatorio de la CNV, incluyendo RG 1069/2025 y el régimen de tokenización.</p>
+        <div class="area-tags">
+          <span class="tag">Blockchain & Web3</span>
+          <span class="tag">Fintech</span>
+          <span class="tag">CNV / RG 1069</span>
+          <span class="tag">Smart contracts</span>
+          <span class="tag">Tokenización</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section id="contacto">
-  <div class="cta-box">
-    <h2 class="cta-title">¿Listo/a para transformar<br>tu práctica jurídica?</h2>
-    <p class="cta-sub">
-      Contame sobre tu proyecto o desafío. Respondemos en menos de 24 horas.
-    </p>
-    <a href="mailto:malenaconde.legaltech@gmail.com" class="cta-email-btn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-      </svg>
-      Escribime un email
-    </a>
-    <p class="cta-note">Sin compromisos. Primera consulta gratuita.</p>
+<!-- DIFERENCIAL -->
+<section class="section section-alt" id="diferencial">
+  <div class="section-inner diferencial-grid">
+    <div>
+      <p class="section-eyebrow">Por qué elegirme</p>
+      <h2 class="split-title" style="font-size:clamp(24px,3.2vw,36px);">Una abogada que entiende <strong>tu negocio y anticipa los riesgos</strong></h2>
+      <p class="dif-text">No soy solo una abogada que redacta contratos. Combino formación jurídica de excelencia con experiencia real en dirección ejecutiva y ecosistemas tecnológicos.</p>
+      <p class="dif-text">Eso me permite identificar problemas antes de que ocurran, no solo resolverlos cuando ya están instalados.</p>
+      <div class="dif-list">
+        <div class="dif-item">
+          <div class="dif-dot"></div>
+          <p class="dif-item-text"><strong>Acceso directo.</strong> Trabajás siempre conmigo, no con un junior o un pasante.</p>
+        </div>
+        <div class="dif-item">
+          <div class="dif-dot"></div>
+          <p class="dif-item-text"><strong>Sin estructura innecesaria.</strong> Servicios jurídicos de alto nivel sin el costo de un área legal interna.</p>
+        </div>
+        <div class="dif-item">
+          <div class="dif-dot"></div>
+          <p class="dif-item-text"><strong>Especialización real.</strong> Posgrado en cripto, blockchain y fintech con tesis sobre el marco regulatorio de la CNV.</p>
+        </div>
+        <div class="dif-item">
+          <div class="dif-dot"></div>
+          <p class="dif-item-text"><strong>Visión ejecutiva.</strong> Experiencia como Chief of Staff — entiendo cómo funciona una empresa por dentro.</p>
+        </div>
+        <div class="dif-item">
+          <div class="dif-dot"></div>
+          <p class="dif-item-text"><strong>Respuesta ágil.</strong> Sin burocracia de estudio. Resolución rápida y comunicación directa.</p>
+        </div>
+      </div>
+    </div>
+    <div class="dif-quote">
+      "Podés tener una abogada de confianza disponible cuando la necesitás, sin tener que armar una estructura legal interna."
+      <cite>Propuesta de valor · Malena Conde</cite>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER · ACCESO DIRECTO -->
+<section class="cta-banner">
+  <p class="section-eyebrow">Acceso directo</p>
+  <h2 class="cta-title">Hablá directamente con<strong>quien te va a representar.</strong></h2>
+  <p class="cta-sub">Sin intermediarios, sin estructura de estudio. Toda consulta es estrictamente confidencial.</p>
+  <div class="cta-actions">
+    <a href="#contacto" class="btn-solid-white">Agendar reunión →</a>
+    <a href="#sobre" class="btn-outline-white">Conocé mi perfil →</a>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="section" id="servicios">
+  <div class="section-inner">
+    <p class="section-eyebrow">Servicios</p>
+    <h2 class="split-title">¿En qué puedo <strong>ayudarte?</strong></h2>
+    <div class="servicios-grid">
+      <div class="servicio-card">
+        <div class="serv-num">01</div>
+        <h3>Contratos & NDAs</h3>
+        <p>Redacción, revisión y negociación de contratos comerciales, acuerdos de confidencialidad, partnerships, referral agreements, equity y vesting.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="serv-num">02</div>
+        <h3>Defensa penal</h3>
+        <p>Representación en causas penales, defensa técnica y querella. Especialización en estafas, delitos económicos, cibernéticos y apropiación indebida.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="serv-num">03</div>
+        <h3>Asesoramiento cripto & blockchain</h3>
+        <p>Compliance ante la CNV, análisis regulatorio bajo RG 1069/2025, contratos cripto y estructuración legal de proyectos Web3, DeFi y tokenización.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="serv-num">04</div>
+        <h3>Abogada externa para empresas</h3>
+        <p>Acompañamiento jurídico continuo o puntual para startups, pymes y empresas tecnológicas. Servicio adaptado a tu necesidad y volumen.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="serv-num">05</div>
+        <h3>Compliance & prevención</h3>
+        <p>Diagnóstico de riesgos legales, revisión de procesos internos y diseño de estructuras de cumplimiento normativo para empresas en crecimiento.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="serv-num">06</div>
+        <h3>Investigaciones internas</h3>
+        <p>Investigación de fraudes, conflictos entre socios, apropiación indebida y situaciones con dimensión penal empresarial o transnacional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="section section-alt" id="sobre">
+  <div class="section-inner sobre-grid">
+    <div class="sobre-foto">
+      <div class="sobre-foto-placeholder">
+        <div class="foto-icon">👤</div>
+        <p class="foto-hint">Reemplazar con foto profesional</p>
+      </div>
+    </div>
+    <div>
+      <p class="section-eyebrow">Sobre mí</p>
+      <h2 class="split-title" style="font-size:clamp(24px,3.2vw,36px);">Abogada UBA con orientación <strong>en tecnología y negocios</strong></h2>
+      <p class="sobre-text">Soy abogada recibida de la <strong>Universidad de Buenos Aires</strong>, con orientación práctica en Derecho Penal y especialización en derecho aplicado a la tecnología, los activos digitales y la estructuración de negocios.</p>
+      <p class="sobre-text">Actualmente me desempeño como <strong>Directora Ejecutiva y Chief of Staff en Lumina Magna LLC</strong>, un ecosistema de empresas tecnológicas, donde diseño y superviso la estructura legal, contractual y operativa de la firma.</p>
+      <p class="sobre-text">Cuento con un <strong>posgrado en Criptomonedas, Blockchain, Smart Contracts, Economía Digital y Fintech</strong> en la Facultad de Derecho de la UBA, cursado con beca parcial por mérito académico. Mi tesis analizó el marco regulatorio de activos tokenizados bajo la RG 1069/2025 de la CNV.</p>
+      <p class="sobre-text">Tuve experiencia en el <strong>Área Legal de Fundación Blockchain Argentina</strong>, donde trabajé en proyectos legislativos y asistí a víctimas de estafas cibernéticas. Ejerzo la defensa penal de manera independiente bajo matrícula propia.</p>
+      <div class="sobre-data">
+        <div class="sobre-dato">
+          <div class="dato-label">Matrícula</div>
+          <div class="dato-val">CPACF · T°155 F°526</div>
+        </div>
+        <div class="sobre-dato">
+          <div class="dato-label">Sede</div>
+          <div class="dato-val">Ciudad Autónoma de Buenos Aires</div>
+        </div>
+        <div class="sobre-dato">
+          <div class="dato-label">Disponibilidad</div>
+          <div class="dato-val">Presencial · Híbrida · Remota</div>
+        </div>
+        <div class="sobre-dato">
+          <div class="dato-label">Idiomas</div>
+          <div class="dato-val">Español (nativo) · Inglés (intermedio)</div>
+        </div>
+        <div class="sobre-dato">
+          <div class="dato-label">Especialización</div>
+          <div class="dato-val">Penal · Empresarial · Cripto</div>
+        </div>
+        <div class="sobre-dato">
+          <div class="dato-label">Formación</div>
+          <div class="dato-val">UBA · Posgrado con beca por mérito</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="section" id="contacto">
+  <div class="section-inner contacto-grid">
+    <div>
+      <p class="section-eyebrow">Contacto</p>
+      <h2 class="split-title" style="font-size:clamp(24px,3.2vw,36px);">Hablemos de <strong>tu situación</strong></h2>
+      <p class="contacto-desc">Toda consulta es estrictamente confidencial. Contame brevemente qué necesitás y te respondo a la brevedad para coordinar una reunión — presencial, virtual o telefónica.</p>
+      <div class="contacto-datos">
+        <div class="contacto-dato">
+          <span class="dato-icon">✉️</span>
+          <span class="dato-text"><a href="mailto:malenaconde.legaltech@gmail.com">malenaconde.legaltech@gmail.com</a></span>
+        </div>
+        <div class="contacto-dato">
+          <span class="dato-icon">📱</span>
+          <span class="dato-text"><a href="https://wa.me/5491136779004" target="_blank">+54 9 11 3677-9004</a></span>
+        </div>
+        <div class="contacto-dato">
+          <span class="dato-icon">📍</span>
+          <span class="dato-text">Ciudad Autónoma de Buenos Aires, Argentina</span>
+        </div>
+        <div class="contacto-dato">
+          <span class="dato-icon">🔗</span>
+          <span class="dato-text"><a href="https://www.linkedin.com/in/malena-conde" target="_blank">linkedin.com/in/malena-conde</a></span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form class="form" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="fname">Nombre *</label>
+            <input type="text" id="fname" name="nombre" placeholder="Tu nombre completo" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fempresa">Empresa</label>
+            <input type="text" id="fempresa" name="empresa" placeholder="Empresa o rubro (opcional)">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="femail">Email *</label>
+          <input type="email" id="femail" name="email" placeholder="tu@email.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="ftelefono">Teléfono</label>
+          <input type="tel" id="ftelefono" name="telefono" placeholder="+54 9 11 ...">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="farea">Área de consulta *</label>
+          <select id="farea" name="area" required>
+            <option value="" disabled selected>Seleccioná un área</option>
+            <option value="penal">Derecho Penal</option>
+            <option value="contratos">Contratos y NDAs</option>
+            <option value="empresarial">Asesoramiento empresarial</option>
+            <option value="cripto">Cripto, Blockchain y Fintech</option>
+            <option value="compliance">Compliance y prevención de riesgos</option>
+            <option value="investigacion">Investigación interna</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="fmensaje">Contame brevemente tu situación *</label>
+          <textarea id="fmensaje" name="mensaje" placeholder="Describí tu consulta en pocas líneas. Toda la información es confidencial." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Enviar consulta</button>
+        <div class="form-success" id="formSuccess">
+          ✓ &nbsp;Tu consulta fue recibida. Te respondo a la brevedad para coordinar una reunión.
+        </div>
+      </form>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-logo">Malena Conde · Legal Tech</span>
-  <div class="footer-links">
-    <a href="https://www.linkedin.com/in/malena-conde-84715b198/" target="_blank" rel="noopener">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-      LinkedIn
-    </a>
-    <a href="mailto:malenaconde.legaltech@gmail.com">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-      malenaconde.legaltech@gmail.com
-    </a>
+  <div class="footer-inner">
+    <div class="footer-name">Malena Conde</div>
+    <div class="footer-tagline">
+      Derecho Penal. Empresarial.<br>
+      Tecnología, cripto & activos digitales.
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Malena Conde · CPACF T°155 F°526 · CABA, Argentina</p>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/malena-conde" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:malenaconde.legaltech@gmail.com">Email</a>
+        <a href="https://wa.me/5491136779004" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
   </div>
-  <span class="footer-copy">© 2026 · Todos los derechos reservados</span>
 </footer>
 
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const menuClose = document.getElementById('menuClose');
+  const menuOverlay = document.getElementById('menuOverlay');
+
+  function openMenu() {
+    menuOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    menuOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  menuToggle.addEventListener('click', openMenu);
+  menuClose.addEventListener('click', closeMenu);
+  menuOverlay.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('formSuccess');
+    const btn = form.querySelector('.form-submit');
+    btn.style.display = 'none';
+    success.classList.add('visible');
+    form.querySelectorAll('input, select, textarea').forEach(el => el.disabled = true);
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      const target = document.querySelector(href);
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
 </body>
 </html>
