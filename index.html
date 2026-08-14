@@ -48,9 +48,22 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     .navbar-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-    .logo-mark { font-weight: 800; font-size: 21px; color: var(--navy); letter-spacing: -0.02em; }
-    .logo-divider { width: 1px; height: 26px; background: var(--border); }
-    .logo-text { font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray); }
+    .logo-badge {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--navy); border: 1px solid rgba(255,255,255,0.4);
+      padding: 3px; display: flex; align-items: center; justify-content: center;
+    }
+    .logo-badge-inner {
+      width: 100%; height: 100%; border: 1px solid rgba(255,255,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-weight: 600; font-size: 14px;
+      color: #fff; letter-spacing: 0.01em;
+    }
+    .logo-divider { width: 1px; height: 30px; background: var(--border); }
+    .logo-text {
+      font-family: 'Playfair Display', serif; font-weight: 500;
+      font-size: 13px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--navy);
+    }
 
     .menu-toggle {
       background: none; border: none; cursor: pointer;
@@ -103,10 +116,14 @@
     .hero-eyebrow::before { content: ''; display: block; width: 26px; height: 1px; background: var(--navy-mid); }
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-weight: 400; font-size: clamp(32px, 4.6vw, 50px);
+      font-weight: 500; font-size: clamp(32px, 4.6vw, 48px);
       color: var(--navy); line-height: 1.24; letter-spacing: -0.005em;
     }
-    .hero h1 em { display: block; font-style: italic; font-weight: 500; color: var(--navy-mid); }
+    .hero-role {
+      display: block; margin-top: 10px;
+      font-family: 'Playfair Display', serif; font-weight: 400; font-style: normal;
+      font-size: clamp(16px, 2vw, 20px); color: var(--navy);
+    }
     .hero-desc {
       max-width: 460px; margin: 26px 0 0;
       color: var(--gray); line-height: 1.85; font-size: 15px;
@@ -153,10 +170,9 @@
 
     .split-title {
       font-family: 'Playfair Display', serif;
-      font-weight: 400; font-size: clamp(24px, 3.4vw, 38px);
-      color: var(--navy); line-height: 1.28; letter-spacing: -0.005em;
+      font-weight: 500; font-size: clamp(24px, 3.4vw, 36px);
+      color: var(--navy); line-height: 1.32; letter-spacing: -0.005em;
     }
-    .split-title em { font-style: italic; font-weight: 500; color: var(--navy-mid); }
 
     /* ── INTRO ── */
     .intro-text { max-width: 720px; color: var(--gray); line-height: 1.9; margin-top: 24px; font-size: 15.5px; }
@@ -199,9 +215,8 @@
     .cta-banner .section-eyebrow::before { background: rgba(255,255,255,0.3); }
     .cta-title {
       font-family: 'Playfair Display', serif;
-      font-weight: 400; font-size: clamp(26px, 4vw, 44px); color: #fff; line-height: 1.28;
+      font-weight: 500; font-size: clamp(26px, 4vw, 40px); color: #fff; line-height: 1.32;
     }
-    .cta-title em { font-style: italic; font-weight: 500; display: block; color: rgba(255,255,255,0.9); }
     .cta-sub { color: rgba(255,255,255,0.5); max-width: 480px; margin: 24px auto 0; font-size: 15px; }
     .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 44px; }
     .btn-solid-white { background: #fff; color: var(--navy); border: 1px solid #fff; padding: 16px 34px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: background 0.2s; }
@@ -223,7 +238,7 @@
       width: 100%; aspect-ratio: 3/4; background: var(--surface2); border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center; flex-direction: column; overflow: hidden;
     }
-    .sobre-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .sobre-foto img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; display: block; }
 
     .sobre-text { color: var(--gray); line-height: 1.9; margin-bottom: 18px; margin-top: 24px; }
     .sobre-text strong { color: var(--black); font-weight: 500; }
@@ -292,7 +307,7 @@
       .diferencial-grid { grid-template-columns: 1fr; gap: 40px; }
       .servicios-grid { grid-template-columns: 1fr 1fr; }
       .sobre-grid { grid-template-columns: 1fr; gap: 40px; }
-      .sobre-foto { aspect-ratio: 4/3; }
+      .sobre-foto { aspect-ratio: 3/4; max-width: 340px; margin: 0 auto; }
       .contacto-grid { grid-template-columns: 1fr; gap: 48px; }
       .form-row { grid-template-columns: 1fr; }
       .cta-banner { padding: 72px 24px; }
@@ -311,7 +326,7 @@
 <!-- NAV -->
 <header class="navbar">
   <a href="#" class="navbar-logo">
-    <span class="logo-mark">MC</span>
+    <span class="logo-badge"><span class="logo-badge-inner">MC</span></span>
     <span class="logo-divider"></span>
     <span class="logo-text">Malena Conde</span>
   </a>
@@ -331,8 +346,8 @@
     <button class="menu-close" id="menuClose" aria-label="Cerrar menú">✕</button>
   </div>
   <nav class="menu-list">
-    <a href="#areas">Áreas de práctica</a>
     <a href="#servicios">Servicios</a>
+    <a href="#areas">Áreas de práctica</a>
     <a href="#sobre">Sobre mí</a>
     <a href="#contacto">Contacto</a>
     <a href="https://wa.me/5491136779004" target="_blank" rel="noopener">WhatsApp</a>
@@ -345,8 +360,8 @@
   <div class="hero-grid">
     <div class="hero-content">
       <p class="hero-eyebrow">Abogada · CPACF T°155 F°526</p>
-      <h1>El rigor del derecho.<em>La cercanía de una abogada.</em></h1>
-      <p class="hero-desc">Asesoramiento jurídico especializado en Derecho Penal y Empresarial, para empresas y personas que necesitan una abogada que entienda su situación, anticipe riesgos y resuelva problemas concretos — sin la distancia de un estudio tradicional.</p>
+      <h1>Malena Conde<span class="hero-role">Abogada · Derecho Penal, Empresarial y Tecnológico</span></h1>
+      <p class="hero-desc">Asesoramiento jurídico en Derecho Penal y Empresarial, para empresas y personas que buscan trabajar de forma directa con la misma abogada de principio a fin, sin la estructura de un estudio tradicional.</p>
       <div class="hero-actions">
         <a href="#areas" class="btn-outline-navy">Áreas de práctica</a>
         <a href="#contacto" class="btn-solid-navy">Agendar consulta</a>
@@ -360,12 +375,52 @@
   </div>
 </section>
 
+<!-- SERVICIOS -->
+<section class="section" id="servicios">
+  <div class="section-inner">
+    <p class="section-eyebrow">Servicios</p>
+    <h2 class="split-title">¿En qué puedo ayudarte?</h2>
+    <div class="servicios-grid">
+      <div class="servicio-card">
+        <div class="serv-num">01</div>
+        <h3>Contratos & NDAs</h3>
+        <p>Redacción, revisión y negociación de contratos comerciales, acuerdos de confidencialidad, partnerships, referral agreements, equity y vesting.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="serv-num">02</div>
+        <h3>Defensa penal</h3>
+        <p>Representación en causas penales, defensa técnica y querella. Especialización en estafas, delitos económicos, cibernéticos y apropiación indebida.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="serv-num">03</div>
+        <h3>Asesoramiento cripto & blockchain</h3>
+        <p>Compliance ante la CNV, análisis regulatorio bajo RG 1069/2025, contratos cripto y estructuración legal de proyectos Web3, DeFi y tokenización.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="serv-num">04</div>
+        <h3>Abogada externa para empresas</h3>
+        <p>Acompañamiento jurídico continuo o puntual para startups, pymes y empresas tecnológicas. Servicio adaptado a tu necesidad y volumen.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="serv-num">05</div>
+        <h3>Compliance & prevención</h3>
+        <p>Diagnóstico de riesgos legales, revisión de procesos internos y diseño de estructuras de cumplimiento normativo para empresas en crecimiento.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="serv-num">06</div>
+        <h3>Investigaciones internas</h3>
+        <p>Investigación de fraudes, conflictos entre socios, apropiación indebida y situaciones con dimensión penal empresarial o transnacional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ÁREAS -->
-<section class="section" id="areas">
+<section class="section section-alt" id="areas">
   <div class="section-inner">
     <p class="section-eyebrow">Áreas de práctica</p>
-    <h2 class="split-title">Tres áreas del derecho. <em>Un mismo compromiso.</em></h2>
-    <p class="intro-text">Ejerzo la defensa penal bajo matrícula propia y asesoro a empresas y personas en derecho contractual, societario y tecnológico — con el rigor de la formación jurídica y la cercanía de trabajar siempre conmigo, de principio a fin.</p>
+    <h2 class="split-title">Penal, empresarial y tecnológico.</h2>
+    <p class="intro-text">Ejerzo la defensa penal bajo matrícula propia y asesoro a empresas y personas en derecho contractual, societario y tecnológico.</p>
 
     <div class="areas-grid">
       <div class="area-card">
@@ -409,11 +464,11 @@
 </section>
 
 <!-- DIFERENCIAL -->
-<section class="section section-alt" id="diferencial">
+<section class="section" id="diferencial">
   <div class="section-inner diferencial-grid">
     <div>
       <p class="section-eyebrow">Por qué elegirme</p>
-      <h2 class="split-title" style="font-size:clamp(24px,3.2vw,36px);">Una abogada que te representa, <em>no que te administra</em></h2>
+      <h2 class="split-title" style="font-size:clamp(24px,3.2vw,32px);">Trabajo directo, sin intermediarios</h2>
       <p class="dif-text">No soy solo una abogada que redacta contratos. Combino formación jurídica de excelencia con experiencia real en dirección ejecutiva y ecosistemas tecnológicos.</p>
       <p class="dif-text">Eso me permite identificar problemas antes de que ocurran, no solo resolverlos cuando ya están instalados.</p>
       <div class="dif-list">
@@ -449,51 +504,11 @@
 <!-- CTA BANNER · ACCESO DIRECTO -->
 <section class="cta-banner">
   <p class="section-eyebrow">Acceso directo</p>
-  <h2 class="cta-title">Hablá directamente con <em>quien te va a representar.</em></h2>
+  <h2 class="cta-title">Coordinemos una reunión</h2>
   <p class="cta-sub">Sin intermediarios, sin estructura de estudio. Toda consulta es estrictamente confidencial.</p>
   <div class="cta-actions">
     <a href="#contacto" class="btn-solid-white">Agendar reunión →</a>
     <a href="#sobre" class="btn-outline-white">Conocé mi perfil →</a>
-  </div>
-</section>
-
-<!-- SERVICIOS -->
-<section class="section" id="servicios">
-  <div class="section-inner">
-    <p class="section-eyebrow">Servicios</p>
-    <h2 class="split-title">¿En qué puedo <em>ayudarte?</em></h2>
-    <div class="servicios-grid">
-      <div class="servicio-card">
-        <div class="serv-num">01</div>
-        <h3>Contratos & NDAs</h3>
-        <p>Redacción, revisión y negociación de contratos comerciales, acuerdos de confidencialidad, partnerships, referral agreements, equity y vesting.</p>
-      </div>
-      <div class="servicio-card">
-        <div class="serv-num">02</div>
-        <h3>Defensa penal</h3>
-        <p>Representación en causas penales, defensa técnica y querella. Especialización en estafas, delitos económicos, cibernéticos y apropiación indebida.</p>
-      </div>
-      <div class="servicio-card">
-        <div class="serv-num">03</div>
-        <h3>Asesoramiento cripto & blockchain</h3>
-        <p>Compliance ante la CNV, análisis regulatorio bajo RG 1069/2025, contratos cripto y estructuración legal de proyectos Web3, DeFi y tokenización.</p>
-      </div>
-      <div class="servicio-card">
-        <div class="serv-num">04</div>
-        <h3>Abogada externa para empresas</h3>
-        <p>Acompañamiento jurídico continuo o puntual para startups, pymes y empresas tecnológicas. Servicio adaptado a tu necesidad y volumen.</p>
-      </div>
-      <div class="servicio-card">
-        <div class="serv-num">05</div>
-        <h3>Compliance & prevención</h3>
-        <p>Diagnóstico de riesgos legales, revisión de procesos internos y diseño de estructuras de cumplimiento normativo para empresas en crecimiento.</p>
-      </div>
-      <div class="servicio-card">
-        <div class="serv-num">06</div>
-        <h3>Investigaciones internas</h3>
-        <p>Investigación de fraudes, conflictos entre socios, apropiación indebida y situaciones con dimensión penal empresarial o transnacional.</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -505,7 +520,7 @@
     </div>
     <div>
       <p class="section-eyebrow">Sobre mí</p>
-      <h2 class="split-title" style="font-size:clamp(24px,3.2vw,36px);">Abogada UBA con orientación <em>práctica en Derecho Penal</em></h2>
+      <h2 class="split-title" style="font-size:clamp(24px,3.2vw,32px);">Abogada UBA, formación práctica en Derecho Penal</h2>
       <p class="sobre-text">Soy abogada recibida de la <strong>Universidad de Buenos Aires</strong>, con orientación práctica en Derecho Penal y especialización en derecho aplicado a la tecnología, los activos digitales y la estructuración de negocios.</p>
       <p class="sobre-text">Actualmente me desempeño como <strong>Directora Ejecutiva y Chief of Staff en Lumina Magna LLC</strong>, un ecosistema de empresas tecnológicas, donde diseño y superviso la estructura legal, contractual y operativa de la firma.</p>
       <p class="sobre-text">Cuento con un <strong>posgrado en Criptomonedas, Blockchain, Smart Contracts, Economía Digital y Fintech</strong> en la Facultad de Derecho de la UBA, cursado con beca parcial por mérito académico. Mi tesis analizó el marco regulatorio de activos tokenizados bajo la RG 1069/2025 de la CNV.</p>
@@ -545,7 +560,7 @@
   <div class="section-inner contacto-grid">
     <div>
       <p class="section-eyebrow">Contacto</p>
-      <h2 class="split-title" style="font-size:clamp(24px,3.2vw,36px);">Hablemos de <em>tu situación</em></h2>
+      <h2 class="split-title" style="font-size:clamp(24px,3.2vw,32px);">Hablemos de tu situación</h2>
       <p class="contacto-desc">Toda consulta es estrictamente confidencial. Contame brevemente qué necesitás y te respondo a la brevedad para coordinar una reunión — presencial, virtual o telefónica.</p>
       <div class="contacto-datos">
         <div class="contacto-dato">
