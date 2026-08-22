@@ -574,7 +574,10 @@
       </div>
     </div>
     <div>
-      <form class="form" id="contactForm" onsubmit="handleSubmit(event)">
+      <form class="form" id="contactForm" action="https://formsubmit.co/ajax/contacto@malenaconde.com" method="POST" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="_subject" value="Nueva consulta desde malenaconde.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="fname">Nombre *</label>
@@ -655,14 +658,29 @@
   menuClose.addEventListener('click', closeMenu);
   menuOverlay.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const form = document.getElementById('contactForm');
     const success = document.getElementById('formSuccess');
     const btn = form.querySelector('.form-submit');
-    btn.style.display = 'none';
-    success.classList.add('visible');
-    form.querySelectorAll('input, select, textarea').forEach(el => el.disabled = true);
+    const originalLabel = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (!res.ok) throw new Error('request failed');
+      btn.style.display = 'none';
+      success.classList.add('visible');
+      form.querySelectorAll('input, select, textarea').forEach(el => el.disabled = true);
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+      alert('No pudimos enviar tu consulta. Por favor, escribinos directamente a contacto@malenaconde.com');
+    }
   }
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
