@@ -135,6 +135,7 @@
       color: var(--gray); line-height: 1.85; font-size: 15px;
     }
     .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-top: 42px; }
+    .hero-note { margin-top: 18px; font-size: 12.5px; color: var(--gray-light); letter-spacing: 0.01em; }
 
     .hero-photo { position: relative; }
     .hero-photo::before {
@@ -237,6 +238,9 @@
     .serv-num { font-size: 11px; color: var(--gray-light); letter-spacing: 0.14em; margin-bottom: 18px; font-weight: 500; }
     .servicio-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: var(--navy); letter-spacing: -0.01em; }
     .servicio-card p { font-size: 13px; color: var(--gray); line-height: 1.75; }
+    .serv-detail { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
+    .serv-detail-line { font-size: 12px; color: var(--gray); line-height: 1.6; }
+    .serv-detail-line strong { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--navy); font-weight: 600; margin-bottom: 2px; }
 
     .section-dark { background: var(--navy); }
     .section-dark .section-eyebrow { color: rgba(255,255,255,0.5); }
@@ -249,6 +253,17 @@
     .section-dark .serv-num { color: rgba(255,255,255,0.35); }
     .section-dark .servicio-card h3 { color: #fff; }
     .section-dark .servicio-card p { color: rgba(255,255,255,0.55); }
+    .section-dark .serv-detail { border-top-color: rgba(255,255,255,0.15); }
+    .section-dark .serv-detail-line { color: rgba(255,255,255,0.55); }
+    .section-dark .serv-detail-line strong { color: rgba(255,255,255,0.85); }
+
+    /* ── TESTIMONIOS ── */
+    .testimonios-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .testimonio-card { background: var(--surface); border: 1px solid var(--border); padding: 36px 32px; display: flex; flex-direction: column; }
+    .testimonio-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; color: var(--black); line-height: 1.75; margin-bottom: 28px; }
+    .testimonio-author { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--border); }
+    .testimonio-name { font-size: 13px; font-weight: 600; color: var(--navy); letter-spacing: -0.005em; }
+    .testimonio-role { font-size: 11.5px; color: var(--gray-light); margin-top: 3px; }
 
     /* ── SOBRE MÍ ── */
     .sobre-grid { display: grid; grid-template-columns: 320px 1fr; gap: 88px; align-items: start; }
@@ -304,7 +319,10 @@
     footer { background: var(--bg); border-top: 1px solid var(--border); padding: 72px 48px 32px; }
     .footer-inner { max-width: 1180px; margin: 0 auto; }
     .footer-name { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 500; letter-spacing: -0.005em; color: var(--navy); margin-bottom: 18px; }
-    .footer-tagline { font-size: 14px; color: var(--gray); line-height: 1.8; margin-bottom: 48px; }
+    .footer-tagline { font-size: 14px; color: var(--gray); line-height: 1.8; margin-bottom: 28px; }
+    .footer-cta { font-size: 14px; color: var(--black); margin-bottom: 32px; }
+    .footer-cta a { color: var(--navy); font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--navy); transition: opacity 0.2s; }
+    .footer-cta a:hover { opacity: 0.65; }
     .footer-bottom {
       border-top: 1px solid var(--border); padding-top: 26px;
       display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;
@@ -324,6 +342,7 @@
       .areas-grid { grid-template-columns: 1fr; }
       .diferencial-grid { grid-template-columns: 1fr; gap: 40px; }
       .servicios-grid { grid-template-columns: 1fr 1fr; }
+      .testimonios-grid { grid-template-columns: 1fr; }
       .sobre-grid { grid-template-columns: 1fr; gap: 40px; }
       .sobre-foto { aspect-ratio: 3/4; max-width: 340px; margin: 0 auto; }
       .contacto-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -381,9 +400,9 @@
       <h1>Malena Conde<span class="hero-role">Abogada · Derecho Penal, Empresarial y Tecnológico</span></h1>
       <p class="hero-desc">Asesoramiento penal, empresarial y tecnológico, para empresas y personas que buscan trabajar de forma directa con la misma abogada de principio a fin, sin la estructura de un estudio tradicional.</p>
       <div class="hero-actions">
-        <a href="#areas" class="btn-outline-navy">Áreas de práctica</a>
-        <a href="#contacto" class="btn-solid-navy">Agendar consulta</a>
+        <a href="#contacto" class="btn-solid-navy">Agendar consulta sin cargo</a>
       </div>
+      <p class="hero-note">Primera consulta confidencial y sin compromiso</p>
     </div>
     <div class="hero-photo">
       <div class="hero-photo-frame">
@@ -402,6 +421,7 @@
     <div>
       <p class="section-eyebrow">Sobre mí</p>
       <h2 class="split-title" style="font-size:clamp(24px,3.2vw,32px);">Abogada UBA, formación práctica en Derecho Penal</h2>
+      <p class="sobre-text">Ayudo a empresas y founders a resolver sus necesidades jurídicas del día a día sin tener que armar un área legal interna.</p>
       <p class="sobre-text">Soy abogada, recibida en la <strong>Universidad de Buenos Aires</strong>, con orientación práctica en Derecho Penal y una especialización que fui construyendo con los años en derecho aplicado a la tecnología, los activos digitales y la estructuración de negocios.</p>
       <p class="sobre-text">Hoy acompaño de forma integral la estructura legal, contractual y operativa de empresas del sector tecnológico, combinando mi formación jurídica con experiencia en gestión ejecutiva — algo que me permite entender no solo el derecho, sino también cómo funciona un negocio por dentro.</p>
       <p class="sobre-text">Complementé mi formación con un <strong>curso de posgrado en Criptomonedas, Blockchain, Smart Contracts, Economía Digital y Fintech</strong> en la Facultad de Derecho de la UBA, con foco en el marco regulatorio de los activos digitales — un área que me apasiona y en la que sigo actualizándome permanentemente.</p>
@@ -446,31 +466,55 @@
         <div class="serv-num">01</div>
         <h3>Defensa penal</h3>
         <p>Representación en causas penales, defensa técnica y querella. Especialización en estafas, delitos económicos, cibernéticos y apropiación indebida.</p>
+        <div class="serv-detail">
+          <p class="serv-detail-line"><strong>¿Para quién es?</strong>Personas o empresas imputadas en una causa penal, o que necesitan representación como querellantes.</p>
+          <p class="serv-detail-line"><strong>¿Cómo empezamos?</strong>Consulta puntual inicial para evaluar el caso; honorarios definidos según la etapa procesal.</p>
+        </div>
       </div>
       <div class="servicio-card">
         <div class="serv-num">02</div>
         <h3>Asesoramiento cripto & blockchain</h3>
         <p>Compliance ante la CNV, análisis regulatorio de activos digitales, contratos cripto y estructuración legal de proyectos Web3, DeFi y tokenización.</p>
+        <div class="serv-detail">
+          <p class="serv-detail-line"><strong>¿Para quién es?</strong>Proyectos Web3, exchanges, fondos y founders que operan con activos digitales.</p>
+          <p class="serv-detail-line"><strong>¿Cómo empezamos?</strong>Fee mensual para acompañamiento continuo, o por proyecto para una estructuración puntual.</p>
+        </div>
       </div>
       <div class="servicio-card">
         <div class="serv-num">03</div>
         <h3>Contratos & NDAs</h3>
         <p>Redacción, revisión y negociación de contratos comerciales, acuerdos de confidencialidad, partnerships, referral agreements, equity y vesting.</p>
+        <div class="serv-detail">
+          <p class="serv-detail-line"><strong>¿Para quién es?</strong>Empresas y founders que necesitan redactar, revisar o negociar acuerdos.</p>
+          <p class="serv-detail-line"><strong>¿Cómo empezamos?</strong>Por proyecto, según la cantidad y complejidad de los documentos a trabajar.</p>
+        </div>
       </div>
       <div class="servicio-card">
         <div class="serv-num">04</div>
         <h3>Consultoría y acompañamiento para startups</h3>
         <p>Acompañamiento jurídico continuo o puntual para startups, pymes y empresas tecnológicas. Servicio adaptado a tu necesidad y volumen.</p>
+        <div class="serv-detail">
+          <p class="serv-detail-line"><strong>¿Para quién es?</strong>Startups y pymes que todavía no tienen un área legal propia.</p>
+          <p class="serv-detail-line"><strong>¿Cómo empezamos?</strong>Fee mensual con alcance definido, o consulta puntual según la necesidad del momento.</p>
+        </div>
       </div>
       <div class="servicio-card">
         <div class="serv-num">05</div>
         <h3>Compliance & prevención</h3>
         <p>Diagnóstico de riesgos legales, revisión de procesos internos y diseño de estructuras de cumplimiento normativo para empresas en crecimiento.</p>
+        <div class="serv-detail">
+          <p class="serv-detail-line"><strong>¿Para quién es?</strong>Empresas en crecimiento que necesitan ordenar sus procesos internos.</p>
+          <p class="serv-detail-line"><strong>¿Cómo empezamos?</strong>Por proyecto, con un diagnóstico inicial y un plan de implementación.</p>
+        </div>
       </div>
       <div class="servicio-card">
         <div class="serv-num">06</div>
         <h3>Investigaciones internas</h3>
         <p>Investigación de fraudes, conflictos entre socios, apropiación indebida y situaciones con dimensión penal empresarial o transnacional.</p>
+        <div class="serv-detail">
+          <p class="serv-detail-line"><strong>¿Para quién es?</strong>Empresas que enfrentan un conflicto interno o una sospecha de fraude.</p>
+          <p class="serv-detail-line"><strong>¿Cómo empezamos?</strong>Consulta puntual y confidencial para definir el alcance de la investigación.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -524,8 +568,39 @@
   </div>
 </section>
 
+<!-- TESTIMONIOS (placeholder — reemplazar por testimonios reales de clientes con consentimiento) -->
+<section class="section" id="testimonios">
+  <div class="section-inner">
+    <p class="section-eyebrow">Testimonios</p>
+    <h2 class="split-title" style="font-size:clamp(24px,3.2vw,32px);">Lo que dicen quienes ya trabajaron conmigo</h2>
+    <div class="testimonios-grid">
+      <div class="testimonio-card">
+        <p class="testimonio-text">"Malena resolvió en días un tema contractual que veníamos posponiendo hace meses. Directa, clara y siempre disponible."</p>
+        <div class="testimonio-author">
+          <div class="testimonio-name">N.R.</div>
+          <div class="testimonio-role">Fundador · Startup fintech</div>
+        </div>
+      </div>
+      <div class="testimonio-card">
+        <p class="testimonio-text">"Necesitábamos asesoramiento legal sin armar un área interna. Encontramos exactamente eso: respuestas rápidas y criterio de negocio."</p>
+        <div class="testimonio-author">
+          <div class="testimonio-name">M.L.</div>
+          <div class="testimonio-role">COO · Empresa de tecnología</div>
+        </div>
+      </div>
+      <div class="testimonio-card">
+        <p class="testimonio-text">"Su conocimiento del marco regulatorio de cripto y activos digitales nos dio tranquilidad para avanzar con el proyecto."</p>
+        <div class="testimonio-author">
+          <div class="testimonio-name">F.G.</div>
+          <div class="testimonio-role">Socio fundador · Proyecto Web3</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- DIFERENCIAL -->
-<section class="section" id="diferencial">
+<section class="section section-alt" id="diferencial">
   <div class="section-inner diferencial-grid">
     <div>
       <p class="section-eyebrow">Por qué elegirme</p>
@@ -648,6 +723,7 @@
       Derecho Penal. Empresarial.<br>
       Tecnología, cripto & activos digitales.
     </div>
+    <p class="footer-cta">¿Necesitás asesoramiento? <a href="https://wa.me/5491136779004" target="_blank" rel="noopener">Escribime</a>.</p>
     <div class="footer-bottom">
       <p class="footer-copy">© 2026 Malena Conde · CPACF T°155 F°526 · CABA, Argentina</p>
       <div class="footer-links">
