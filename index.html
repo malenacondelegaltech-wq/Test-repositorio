@@ -238,6 +238,18 @@
     .servicio-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: var(--navy); letter-spacing: -0.01em; }
     .servicio-card p { font-size: 13px; color: var(--gray); line-height: 1.75; }
 
+    .section-dark { background: var(--navy); }
+    .section-dark .section-eyebrow { color: rgba(255,255,255,0.5); }
+    .section-dark .section-eyebrow::before { background: rgba(255,255,255,0.35); }
+    .section-dark .split-title { color: #fff; }
+    .section-dark .intro-text { color: rgba(255,255,255,0.6); }
+    .section-dark .servicios-grid { background: rgba(255,255,255,0.1); }
+    .section-dark .servicio-card { background: var(--navy); }
+    .section-dark .servicio-card:hover { border-top-color: #fff; }
+    .section-dark .serv-num { color: rgba(255,255,255,0.35); }
+    .section-dark .servicio-card h3 { color: #fff; }
+    .section-dark .servicio-card p { color: rgba(255,255,255,0.55); }
+
     /* ── SOBRE MÍ ── */
     .sobre-grid { display: grid; grid-template-columns: 320px 1fr; gap: 88px; align-items: start; }
     .sobre-foto {
@@ -425,7 +437,7 @@
 </section>
 
 <!-- SERVICIOS -->
-<section class="section" id="servicios">
+<section class="section section-dark" id="servicios">
   <div class="section-inner">
     <p class="section-eyebrow">Servicios</p>
     <h2 class="split-title">¿En qué puedo ayudarte?</h2>
@@ -447,7 +459,7 @@
       </div>
       <div class="servicio-card">
         <div class="serv-num">04</div>
-        <h3>Abogada externa para empresas</h3>
+        <h3>Consultoría y acompañamiento para startups</h3>
         <p>Acompañamiento jurídico continuo o puntual para startups, pymes y empresas tecnológicas. Servicio adaptado a tu necesidad y volumen.</p>
       </div>
       <div class="servicio-card">
